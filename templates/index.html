@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load markdown_extras %}
 {% block title %} 歡迎光臨我的部落格 {% endblock %}
 {% block headmessage %}
 <h3 style="font-family: 標楷體;">本站文章列表</h3>
@@ -13,7 +14,7 @@
     </div>
     <div class="card-body" style="background-color: #ffffdd;">
         <p>
-            {{post.body | truncatechars:40}}
+            {{post.body | slice:":40" | convert_markdown | safe}}
         </p>
     </div>
     <div class="card-footer">
